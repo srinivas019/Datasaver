@@ -108,9 +108,7 @@ def register_user(
     phone: str = Form(...),
     password: str = Form(...)
 ):
-    if "user" not in request.session:
-        return RedirectResponse(url="/login", status_code=303)
-
+    
     db = SessionLocal()
 
     existing_user = db.query(User).filter(
