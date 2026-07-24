@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+
+<div class="auth-page">
+
+    <h2>Login</h2>
+
+    {% if message %}
+    <p class="form-message">{{ message }}</p>
+    {% endif %}
+
+    <form action="/login" method="post">
+
+        <label>Email</label><br>
+        <input type="email" name="email" placeholder="Enter Email" required>
+        <br><br>
+
+        <label>Password</label><br>
+        <input type="password" name="password" placeholder="Enter Password" required>
+        <br><br>
+
+        <div class="button-group button-group-stack">
+            <button type="submit">Login</button>
+
+            <p class="helper-text">Don't have an account?</p>
+
+            <a href="/register">
+                <button type="button">Register</button>
+            </a>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

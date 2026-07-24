@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit User
+{% endblock %}
+
+{% block content %}
+
+<h2>Edit User</h2>
+
+{% if message %}
+<p class="form-message">{{ message }}</p>
+{% endif %}
+
+<form action="/update/{{ user.rollno }}" method="post">
+
+    <label>Name</label><br>
+    <input type="text" name="name" value="{{ user.name }}" required>
+    <br><br>
+
+    <label>Roll Number</label><br>
+    <input type="number" name="new_rollno" value="{{ user.rollno }}" required>
+    <br><br>
+
+    <label>Email</label><br>
+    <input type="email" name="email" value="{{ user.email }}" required>
+    <br><br>
+
+    <label>Phone Number</label><br>
+    <input type="text" name="phone" value="{{ user.phone }}" required>
+    <br><br>
+
+    <label>Password</label><br>
+    <input type="password" name="password" placeholder="Enter new password" required>
+    <br><br>
+
+    <div class="button-group">
+        <button type="submit">Update User</button>
+
+        <a href="/home">
+            <button type="button">Cancel</button>
+        </a>
+    </div>
+
+</form>
+
+{% endblock %}

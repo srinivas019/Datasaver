@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<h2>All Users</h2>
+
+<div class="button-group page-actions">
+    <a href="/register">
+        <button type="button">Add New User</button>
+    </a>
+
+    <a href="/logout">
+        <button type="button">Logout</button>
+    </a>
+</div>
+
+{% if users %}
+
+<div class="table-wrapper">
+    <table border="1" cellpadding="10" cellspacing="0">
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Roll No</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for user in users %}
+
+        <tr>
+
+            <td>{{ user.id }}</td>
+
+            <td>{{ user.name }}</td>
+
+            <td>{{ user.rollno }}</td>
+
+            <td>{{ user.email }}</td>
+
+            <td>{{ user.phone }}</td>
+
+            <td>
+
+                {% if user.email == email %}
+                <div class="button-group button-group-inline table-actions">
+                    <a href="/edit/{{ user.rollno }}">
+                        <button type="button">Edit</button>
+                    </a>
+
+                    <form action="/delete/{{ user.rollno }}" method="post" class="inline-form">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+                {% else %}
+                <span class="muted-text">Locked</span>
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+</div>
+
+{% else %}
+
+<h3>No Users Found</h3>
+
+{% endif %}
+
+{% endblock %}
