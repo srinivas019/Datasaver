@@ -93,9 +93,6 @@ def login(
 
 @router.get("/register")
 def register_page(request: Request):
-    if "user" not in request.session:
-        return RedirectResponse(url="/login", status_code=303)
-
     return templates.TemplateResponse(
         request=request,
         name="register.html"
